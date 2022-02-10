@@ -36,9 +36,9 @@ function* fetchSearchResults(action) {
 
 function* fetchFavoritesForCategory(action) {
     try {
-        const results = yield axios.get(`/api/gifs/favorite/${action.payload}`);
+        const results = yield axios.get(`/api/favorite/${action.payload}`);
         console.log(results);
-        yield put({type: 'SET_FAVORITES', payload: results});
+        yield put({type: 'SET_FAVORITES', payload: results.data});
     } catch (error) {
         console.warn('fetchAllFavorites error: ', error);
     }
@@ -46,9 +46,9 @@ function* fetchFavoritesForCategory(action) {
 
 function* fetchAllFavorites(action) {
     try {
-        const results = yield axios.get(`/api/gifs/favorite`);
+        const results = yield axios.get(`/api/favorite`);
         console.log(results);
-        yield put({type: 'SET_FAVORITES', payload: results});
+        yield put({type: 'SET_FAVORITES', payload: results.data});
     } catch (error) {
         console.warn('fetchAllFavorites error: ', error);
     }
@@ -56,8 +56,8 @@ function* fetchAllFavorites(action) {
 
 function* fetchCategories(action) {
     try {
-        const results = yield axios.get(`/api/gifs/category`);
-        yield put({type: 'SET_CATEGORIES', payload: results});
+        const results = yield axios.get(`/api/category`);
+        yield put({type: 'SET_CATEGORIES', payload: results.data});
     } catch (error) {
         console.warn('fetchAllCategories error: ', error);
     }
