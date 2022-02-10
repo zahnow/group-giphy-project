@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import SearchPage from '../SearchPage/SearchPage';
 import FavortiesPage from '../FavoritesPage/FavoritesPage';
@@ -10,9 +10,9 @@ function App(props) {
     <div>
       <Router>
       <header>
-        <li><Link to="/">Home </Link></li>
-        <li><Link to="/searchPage">Search </Link></li>
-        <li><Link to="/favoritesPage">Favorites </Link></li>
+        <li><NavLink to="/">Home </NavLink></li>
+        <li><NavLink to="/searchPage">Search </NavLink></li>
+        <li><NavLink to="/favoritesPage">Favorites </NavLink></li>
       </header>
       <h1>Giphy Search Results</h1>
         <Route path="/" exact>
