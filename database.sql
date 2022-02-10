@@ -12,3 +12,16 @@ CREATE TABLE "category" (
 -- Default categories. You may change them :)
 INSERT INTO "category" ("name")
 VALUES ('funny'), ('cohort'), ('cartoon'), ('nsfw'), ('meme');
+
+
+-- FORTRAN STUFF --
+CREATE TABLE "favorites" (
+	"id" SERIAL PRIMARY KEY,
+    "name" VARCHAR (250) NOT NULL,
+    "path" VARCHAR (1000) NOT NULL
+);
+
+CREATE TABLE "favorites_category" (
+	"favorites_id" INTEGER REFERENCES "favorites",
+	"category_id" INTEGER REFERENCES "category"
+);
