@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
       res.send(response.rows);
     })
     .catch(error => {
-      console.warn('error');
+      console.warn(error);
       res.sendStatus(500);
     })
 });
@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
       res.sendStatus(200);
     })
     .catch((error) => {
-      console.warn('error');
+      console.warn(error);
       res.sendStatus(500);
     })
 });
@@ -32,7 +32,22 @@ router.post('/', (req, res) => {
 // update given favorite with a category id
 router.put('/:favId', (req, res) => {
   // req.body should contain a category_id to add to this favorite image
-  res.sendStatus(200);
+  // req.body should also contain an "action" set to either "ADD" or "REMOVE", this will determine if you're adding or removing the favorite.
+
+  let queryString = `INSERT INTO "favorites_category" ("favorites_id", "category_id") VALUES ($1, $2);`;
+  if (req.body.action === "REMOVE") {
+    console.log('in remove action');
+    queryString = `DELETE FROM "favorites_category" WHERE "favorites_id"=$1 AND "category_id"=$2;`;
+  }
+
+  pool.query(queryString, [req.params.favId, req.body.category_id])
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.warn(error);
+      res.sendStatus(500);
+    })
 });
 
 // delete a favorite
@@ -43,7 +58,7 @@ router.delete('/:id', (req, res) => {
       res.sendStatus(200);
     })
     .catch((error) => {
-      console.warn('error');
+      console.warn(error);
       res.sendStatus(500);
     })
 });
