@@ -1,0 +1,9 @@
+.gifContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.gifs {
+    margin: 10px;
+}
