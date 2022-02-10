@@ -20,6 +20,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 function* watcherSaga() {
 	yield takeEvery('FETCH_SEARCH_RESULTS', fetchSearchResults);
+    yield takeEvery('FETCH_CATEGORIES', fetchCategories);
+    yield takeEvery('FETCH_ALL_FAVORITES', fetchAllFavorites);
 }
 
 function* fetchSearchResults(action) {
@@ -30,6 +32,35 @@ function* fetchSearchResults(action) {
 
     } catch (error) {
         console.warn('fetchSearch error: ', error);
+    }
+}
+
+function* fetchFavoritesForCategory(action) {
+    try {
+        const results = yield axios.get(`/api/gifs/favorite/${action.payload}`);
+        console.log(results);
+        yield put({type: 'SET_FAVORITES', payload: results});
+    } catch (error) {
+        console.warn('fetchAllFavorites error: ', error);
+    }
+}
+
+function* fetchAllFavorites(action) {
+    try {
+        const results = yield axios.get(`/api/gifs/favorite`);
+        console.log(results);
+        yield put({type: 'SET_FAVORITES', payload: results});
+    } catch (error) {
+        console.warn('fetchAllFavorites error: ', error);
+    }
+}
+
+function* fetchCategories(action) {
+    try {
+        const results = yield axios.get(`/api/gifs/category`);
+        yield put({type: 'SET_CATEGORIES', payload: results});
+    } catch (error) {
+        console.warn('fetchAllCategories error: ', error);
     }
 }
 
