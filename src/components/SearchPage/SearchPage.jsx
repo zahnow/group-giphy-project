@@ -1,6 +1,7 @@
 import axios from 'axios';
 import react, {useState} from 'react';
 import {useDispatch, useSelector } from 'react-redux';
+import './SearchPage.css';
 
 function SearchPage(){
 
@@ -16,12 +17,34 @@ function SearchPage(){
         });
     }
 
+    let results = useSelector(store => store.searchResults)
+    results = results.data;
+    console.log('results:',results)
+
+    function displayGifs() {
+        if (results===undefined) {
+            return(
+                <p>loading...</p>
+            )
+        }
+        else {
+            console.log(results)
+            return(
+                results.map(gif => 
+                    <img className="gifs" key={gif.id} src={gif.images.original.url} />
+                )
+            )
+        }
+    }
+
+    
     return(
         <>
             <form>
             <label>What would you like to search for: </label><input type='text' onChange={(event) => setInput(event.target.value)} value={input} placeholder="Search"></input>
             <button onClick={searchResult} >Submit</button>
             </form>
+            <div className='gifContainer'>{displayGifs()}</div>
         </>
     );
 }
