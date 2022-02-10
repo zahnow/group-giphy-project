@@ -25,7 +25,7 @@ function* watcherSaga() {
 function* fetchSearchResults(action) {
     try {
         const results = yield axios.get(`/api/gifs/`);     // REPLACE WITH WHEN SEARCH IS READY `/api/gifs/${action.payload}`
-        yield put({type: '', payload: ''})
+        yield put({type: 'SET_RESULTS', payload: action.payload});
 
     } catch (error) {
         console.warn('fetchSearch error: ', error);
