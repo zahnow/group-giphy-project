@@ -2,7 +2,7 @@ import React from 'react';
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import SearchPage from '../SearchPage/SearchPage';
-import FavortiesPage from '../FavoritesPage/FavoritesPage';
+import FavoritesPage from '../FavoritesPage/FavoritesPage';
 import HomePage from '../HomePage/HomePage';
 
 function App(props) {
@@ -22,7 +22,7 @@ function App(props) {
           <SearchPage />
         </Route>
         <Route path="/favoritesPage">
-          <FavortiesPage />
+          <FavoritesPage />
         </Route>
       </Router>
     </div>
