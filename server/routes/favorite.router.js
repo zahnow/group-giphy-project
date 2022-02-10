@@ -16,6 +16,22 @@ router.get('/', (req, res) => {
     })
 });
 
+// return favorite images for a category
+router.get('/:categoryId', (req, res) => {
+  const queryString = `
+    SELECT * FROM "favorites" 
+    JOIN "favorites_category" ON "favorites"."id" = "favorites_category"."favorites_id"
+    WHERE "favorites_category"."category_id" = $1;`;
+  pool.query(queryString, [req.params.categoryId])
+    .then((response) => {
+      res.send(response.rows);
+    })
+    .catch((error) => {
+      console.warn(error);
+      res.sendStatus(500);
+    })
+})
+
 // add a new favorite
 router.post('/', (req, res) => {
   const queryString = `INSERT INTO "favorites" ("name", "path") VALUES ($1, $2);`;
