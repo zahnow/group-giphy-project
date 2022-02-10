@@ -22,9 +22,10 @@ function* watcherSaga() {
 	yield takeEvery('FETCH_SEARCH_RESULTS', fetchSearchResults);
 }
 
-function* fetchSearchResults() {
+function* fetchSearchResults(action) {
     try {
-        const results = yield axios.get('/search');
+        const results = yield axios.get(`/api/gifs/`);     // REPLACE WITH WHEN SEARCH IS READY `/api/gifs/${action.payload}`
+        yield put({type: '', payload: ''})
 
     } catch (error) {
         console.warn('fetchSearch error: ', error);
