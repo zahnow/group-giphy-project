@@ -10,8 +10,31 @@ import logger from 'redux-logger';
 // REDUX SAGA IMPORTS
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
+import axios from 'axios';
 
-// Redux Reducers
+///////////////////
+// SAGAS
+///////////////////
+
+const sagaMiddleware = createSagaMiddleware();
+
+function* watcherSaga() {
+	yield takeEvery('FETCH_SEARCH_RESULTS', fetchSearchResults);
+}
+
+function* fetchSearchResults() {
+    try {
+        const results = yield axios.get('/search');
+
+    } catch (error) {
+        console.warn('fetchSearch error: ', error);
+    }
+}
+
+
+///////////////////
+// REDUCERS
+///////////////////
 
 const favoritesReducer = (state = [], action) => {
     switch (action.type) {
@@ -33,14 +56,29 @@ const categoriesReducer = (state = [], action) => {
     }
 }
 
-// Create the store
+const searchResultsReducer = (state = [], action) => {
+    switch (action.type) {
+        case "SET_RESULTS":
+            return action.payload;
+    
+        default:
+            return state;
+    }
+}
+
+///////////////////
+// Create the store and run the watcher saga
+///////////////////
 
 const storeInstance = createStore(
   combineReducers({
     favorites: favoritesReducer,
-    categories: categoriesReducer
-  }), applyMiddleware(logger)
+    categories: categoriesReducer,
+    searchResults: searchResultsReducer
+  }), applyMiddleware(logger, sagaMiddleware)
 )
+
+sagaMiddleware.run(watcherSaga);
 
 ReactDOM.render(
     <Provider store={storeInstance}>
