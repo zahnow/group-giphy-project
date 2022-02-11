@@ -1,10 +1,10 @@
-
+import { useHistory } from 'react-router-dom';
 
 function HomePage(){
-
+    const history = useHistory();
     return(
         <>
-            <p>Welcome to the HomePage</p>
+        <h2 className='routes' onClick={() => history.push('/searchPage')}>Click To Begin Giphy Search!</h2>
         </>
     );
 }
