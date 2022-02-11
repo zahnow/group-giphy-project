@@ -13,9 +13,6 @@ function App(props) {
       <Router>
       <header>
         <Header />
-        <li><NavLink to="/">Home </NavLink></li>
-        <li><NavLink to="/searchPage">Search </NavLink></li>
-        <li><NavLink to="/favorites">Favorites </NavLink></li>
       </header>
       <h1>Giphy Search Results</h1>
         <Route path="/" exact>
