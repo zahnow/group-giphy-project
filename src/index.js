@@ -65,7 +65,6 @@ function* fetchCategories(action) {
     }
 }
 
-
 ///////////////////
 // REDUCERS
 ///////////////////
