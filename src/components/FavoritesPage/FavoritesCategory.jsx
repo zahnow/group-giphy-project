@@ -13,16 +13,21 @@ function FavoritesCategory () {
     const params = useParams();
 
     useEffect(() => {
+        refreshData();
+    }, []);
+
+    function refreshData() {
+        console.log('REFRESHING DATA...');
         dispatch({type: 'FETCH_CATEGORIES'});
         dispatch({type: 'FETCH_FAVORITES_IN_CATEGORY', payload: params.id});
-    }, []);
+    }
 
     return(
         <>
             <h1>{categories.find(category => category?.id === params?.id)} Favorites</h1>
             <div className='category-nav'>
                 <ul>
-                    {categories.map(category => (<li key={category.id}> <NavLink key={category.id} to={`/favorites/${category.id}`} > {category.name} </NavLink> </li>))}
+                    {categories.map(category => (<li key={category.id}> <NavLink key={category.id} onClick={refreshData} to={`/favorites/${category.id}`} > {category.name} </NavLink> </li>))}
                 </ul>
             </div>
             <div className='gifContainer'>
