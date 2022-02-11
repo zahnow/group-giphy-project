@@ -1,0 +1,41 @@
+.gifContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gifItemContainer {
+    width: 500px;
+    height: 700px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(226, 226, 226);
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.gifs {
+    margin-top: 20px;
+    object-fit: cover;
+    width: 90%;
+    height: 60%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.gifTitle {
+    position: relative;
+    top: -10px;
+    z-index: 1;
+}
+
+.lineBreak {
+    color: rgb(226, 226, 226);
+    width: 90%;
+    border-bottom: 2px solid black;
+    position: relative;
+    top: -60px;
+}
