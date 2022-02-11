@@ -37,7 +37,7 @@ function SearchPage(){
     return(
         <>
             <form>
-            <label>What would you like to search for: </label><input type='text' onChange={(event) => setInput(event.target.value)} value={input} placeholder="Search"></input>
+                <input type='text' onChange={(event) => setInput(event.target.value)} value={input} placeholder="Search"></input>
             <button onClick={searchResult} >Submit</button>
             </form>
             <div className='gifContainer'>{displayGifs()}</div>

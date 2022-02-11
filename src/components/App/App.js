@@ -14,7 +14,6 @@ function App(props) {
       <header>
         <Header />
       </header>
-      <h1>Giphy Search Results</h1>
         <Route path="/" exact>
           <HomePage />
         </Route>
