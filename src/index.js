@@ -22,6 +22,7 @@ function* watcherSaga() {
 	yield takeEvery('FETCH_SEARCH_RESULTS', fetchSearchResults);
     yield takeEvery('FETCH_CATEGORIES', fetchCategories);
     yield takeEvery('FETCH_ALL_FAVORITES', fetchAllFavorites);
+    yield takeEvery('FETCH_FAVORITES_IN_CATEGORY', fetchFavoritesForCategory);
 }
 
 function* fetchSearchResults(action) {
@@ -35,12 +36,13 @@ function* fetchSearchResults(action) {
 }
 
 function* fetchFavoritesForCategory(action) {
+    console.log('In fetch favorites for category', action.payload);
     try {
         const results = yield axios.get(`/api/favorite/${action.payload}`);
         console.log(results);
         yield put({type: 'SET_FAVORITES', payload: results.data});
     } catch (error) {
-        console.warn('fetchAllFavorites error: ', error);
+        console.warn('fetchFavorites error: ', error);
     }
 }
 

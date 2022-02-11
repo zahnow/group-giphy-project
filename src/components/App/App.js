@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import SearchPage from '../SearchPage/SearchPage';
 import FavoritesPage from '../FavoritesPage/FavoritesPage';
 import Header from '../Header/Header';
+import FavoritesCategory from '../FavoritesPage/FavoritesCategory'
 import HomePage from '../HomePage/HomePage';
 
 function App(props) {
@@ -14,7 +15,7 @@ function App(props) {
         <Header />
         <li><NavLink to="/">Home </NavLink></li>
         <li><NavLink to="/searchPage">Search </NavLink></li>
-        <li><NavLink to="/favoritesPage">Favorites </NavLink></li>
+        <li><NavLink to="/favorites">Favorites </NavLink></li>
       </header>
       <h1>Giphy Search Results</h1>
         <Route path="/" exact>
@@ -23,8 +24,11 @@ function App(props) {
         <Route path="/searchPage">
           <SearchPage />
         </Route>
-        <Route path="/favoritesPage">
+        <Route path="/favorites" exact>
           <FavoritesPage />
+        </Route>
+        <Route path="/favorites/:id">
+          <FavoritesCategory />
         </Route>
       </Router>
     </div>
