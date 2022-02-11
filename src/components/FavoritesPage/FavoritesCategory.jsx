@@ -22,7 +22,7 @@ function FavoritesCategory () {
             <h1>{categories.find(category => category?.id === params?.id)} Favorites</h1>
             <div className='category-nav'>
                 <ul>
-                    {categories.map(category => (<li key={category.id}> <NavLink to={`/favorites/${category.id}`} > {category.name} </NavLink> </li>))}
+                    {categories.map(category => (<li key={category.id}> <NavLink key={category.id} to={`/favorites/${category.id}`} > {category.name} </NavLink> </li>))}
                 </ul>
             </div>
             {favorites.map(favorite => {return (
