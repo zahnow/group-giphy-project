@@ -24,14 +24,18 @@ function SearchPage(){
     function displayGifs() {
         if (results===undefined) {
             return(
-                <p>loading...</p>
+                <p>Nothing yet</p>
             )
         }
         else {
             console.log(results)
             return(
                 results.map(gif => 
-                    <img className="gifs" key={gif.id} src={gif.images.original.url} />
+                    <div className='gifItemContainer'>
+                        <img className="gifs" key={gif.id} src={gif.images.original.url} />
+                        <h3 className='gifTitle'>{gif.title}</h3>
+                        <p className='lineBreak'>this is invisible on purpose for the line break, dont touch</p> {/*dont touch it works*/}
+                    </div>
                 )
             )
         }
