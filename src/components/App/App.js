@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import SearchPage from '../SearchPage/SearchPage';
 import FavoritesPage from '../FavoritesPage/FavoritesPage';
+import Header from '../Header/Header';
 import FavoritesCategory from '../FavoritesPage/FavoritesCategory'
 import HomePage from '../HomePage/HomePage';
 
@@ -11,6 +12,7 @@ function App(props) {
     <div>
       <Router>
       <header>
+        <Header />
         <li><NavLink to="/">Home </NavLink></li>
         <li><NavLink to="/searchPage">Search </NavLink></li>
         <li><NavLink to="/favorites">Favorites </NavLink></li>
