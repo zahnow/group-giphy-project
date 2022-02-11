@@ -25,9 +25,11 @@ function FavoritesCategory () {
                     {categories.map(category => (<li key={category.id}> <NavLink key={category.id} to={`/favorites/${category.id}`} > {category.name} </NavLink> </li>))}
                 </ul>
             </div>
+            <div className='gifContainer'>
             {favorites.map(favorite => {return (
                 <FavoritesItem key={favorite.id} categories={categories} favorite={favorite} />
             )})}
+            </div>
         </>
     );
 }
