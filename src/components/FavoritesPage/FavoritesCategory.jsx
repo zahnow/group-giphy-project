@@ -2,6 +2,8 @@ import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
+import FavoritesItem from './FavoritesItem';
+import './Favorites.css';
 
 
 function FavoritesCategory () {
@@ -23,13 +25,8 @@ function FavoritesCategory () {
                     {categories.map(category => (<li key={category.id}> <NavLink to={`/favorites/${category.id}`} > {category.name} </NavLink> </li>))}
                 </ul>
             </div>
-
-            <h2>favorites</h2>
             {favorites.map(favorite => {return (
-                <div>
-                    <h3>{favorite.name}</h3>
-                    <img src={favorite.path} />
-                </div>
+                <FavoritesItem key={favorite.id} categories={categories} favorite={favorite} />
             )})}
         </>
     );

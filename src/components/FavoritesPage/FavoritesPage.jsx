@@ -1,12 +1,14 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import './Favorites.css';
+import FavoritesItem from './FavoritesItem';
 
 function FavoritesPage(){
     const dispatch = useDispatch();
     const favorites = useSelector(store => store.favorites);
     const categories = useSelector(store => store.categories);
+    //const [catInput, ]
 
     useEffect(() => {
         dispatch({type: 'FETCH_CATEGORIES'});
@@ -21,13 +23,8 @@ function FavoritesPage(){
                     {categories.map(category => (<li key={category.id}> <NavLink to={`/favorites/${category.id}`} > {category.name} </NavLink> </li>))}
                 </ul>
             </div>
-
-            <h2>favorites</h2>
             {favorites.map(favorite => {return (
-                <div key={favorite.id}>
-                    <h3>{favorite.name}</h3>
-                    <img src={favorite.path} />
-                </div>
+                <FavoritesItem key={favorite.id} categories={categories} favorite={favorite} />
             )})}
         </>
     );
