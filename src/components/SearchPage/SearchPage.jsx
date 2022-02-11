@@ -2,6 +2,7 @@ import axios from 'axios';
 import react, {useState} from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import './SearchPage.css';
+import GalleryItem from '../GalleryItem/GalleryItem';
 
 function SearchPage(){
 
@@ -31,7 +32,8 @@ function SearchPage(){
             console.log(results)
             return(
                 results.map(gif => 
-                    <img className="gifs" key={gif.id} src={gif.images.original.url} />
+                    <GalleryItem key={gif.id} giphy={gif} />
+                    // <img className="gifs" key={gif.id} src={gif.images.original.url} />
                 )
             )
         }
