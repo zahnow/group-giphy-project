@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 
 function GalleryItem(props) {
     let gif = props.giphy
-    console.log('the props coming: ',props.giphy);
     let path = props.giphy?.images?.original?.url;
     let name = props.giphy.id;
     const dispatch = useDispatch();

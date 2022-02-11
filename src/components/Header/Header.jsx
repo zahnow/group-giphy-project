@@ -2,17 +2,16 @@ import { useHistory } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
-    const history = useHistory();
-    let testClass = 'test'
-    function toggleClass() {
-        testClass = 'test2'
-    }
+    const history = useHistory();    
     return (
-        <>
-            <h1 className={testClass} onMouseOver={toggleClass} onClick={() => history.push('/')}>Home</h1>
-            <h1 onClick={() => history.push('/searchPage')}>Search</h1>
-            <h1 onClick={() => history.push('/favoritesPage')}>Favorites</h1>
-        </>
+        <div className='headerContainer'>
+            <div className='formBody'>
+                <h2 className='routes' onClick={() => history.push('/')}>Home</h2>
+                <h2 className='routes' onClick={() => history.push('/searchPage')}>Search</h2>
+                <h2 className='routes' onClick={() => history.push('/favoritesPage')}>Favorites</h2>
+            </div>
+            <h1 className='title'>Giphy Project</h1>
+        </div>
     )
 }
 

@@ -23,12 +23,7 @@ function SearchPage(){
     console.log('results:',results)
 
     function displayGifs() {
-        if (results===undefined) {
-            return(
-                <p>Nothing yet</p>
-            )
-        }
-        else {
+        if (results!==undefined) {
             console.log(results)
             return(
                 results.map(gif => 

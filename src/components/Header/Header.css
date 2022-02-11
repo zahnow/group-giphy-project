@@ -1,10 +1,45 @@
-.test {
-    border: 1px solid red;
-    width: 100px;
+body {
+    background-color: #283739;
+    font-family: sans-serif;
+    margin: 0;
 }
 
-.test2 {
-    color: red;
-    border: 1px solid red;
-    width: 100px;
+.headerContainer {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 8px solid #a2c11c;
+}
+
+.formBody {
+    background-color: #2c5d63;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.title {
+    color: #e0e0e0;
+    font-size: 300%;
+    position: absolute;
+    top: 10px;
+}
+
+.routes {
+    color: #e0e0e0;
+    margin: 10px;
+}
+
+.routes:hover {
+    color: #a2c11c;
+    font-size: 175%;
+    border-bottom: 2px solid #a2c11c;
+    cursor: pointer;
 }
